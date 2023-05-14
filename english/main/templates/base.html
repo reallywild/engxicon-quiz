@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Engxicon</title>
+ <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+ <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+{% block body %}
+{% endblock body %}
+
+    <div class="row">
+        <header class="col-md-3">
+            <div class="top">
+                <a class="navbar-brand text-center text-white" href="{% url 'main' %}"><h2>Engxicon</h2></a>
+            </div>
+            <nav id="brg">
+                    <a class="navbar-brand text-center text-white d-none tit" href="{% url 'main' %}"><h2>Engxicon</h2></a>
+                    <a class="btn-nav btn grad-1" href="{% url 'main' %}">Общие слова</a>
+                    <a class="btn-nav btn grad-2" href="{% url 'prog' %}">Программирование</a>
+                    <a class="btn-nav btn grad-4" href="{% url 'book' %}">Книги</a>
+                    <a class="btn-nav btn grad-3" href="{% url 'tv' %}">Сериалы и фильмы</a> 
+            </nav>
+            <div class="burger" id="brgc">
+                <span></span>
+            </div>
+        </header>
+
+
+        <main class="col-md-9">
+            {% block content %}
+            {% endblock content %}
+        </main>
+    </div>
+
+    <footer class="col-md-3">
+        <div class="links mt-2">
+            <a href="https://github.com"><img src="{% static 'img/github.png' %}"></a>
+            <a href="https://vk.com"><img src="{% static 'img/vk.png' %}"></a>
+        </div>
+        <p>&copy; Engxicon 2023</p>
+    </footer>
+
+
+
+    <script>
+        document.querySelector('.burger').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('nav').classList.toggle('open');
+            document.querySelector('.tit').classList.toggle('open');
+        })
+    </script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

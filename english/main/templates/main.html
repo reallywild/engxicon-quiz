@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<body class="grad-1">
+
+{% endblock body %}
+
+
+{% block content %}
+<form method="POST" action="{% url 'main' %}" class="card">
+    {% csrf_token %}
+    <div class="card-body">
+        <h1 class="card-title text-center">Общие слова</h1>
+        <h3 class="card-text text-center">Переведите слово без контекста предложения</h3 align="center">
+        <div class="translate">
+            <p class="card-text">
+                Предложение: "{{sentence}}" <br> <br>
+                Cлово для перевода: <b>{{word}}</b>
+            </p>
+
+            <input type="hidden" name="translation" value="{{translation}}">
+
+            <input type="text" class="form-control" name="wordinput" id="wordinput" placeholder="Введите перевод"
+                autofocus>
+            <button type="submit" class="btn btn-sub mt-3">Проверить</button>
+
+            <p class="card-text text-center messageDiv" id="messageDiv"></p>
+
+            <script>
+                const urlParams = new URLSearchParams(window.location.search);
+                const message = urlParams.get('message');
+                if (message) {
+                    const messageDiv = document.querySelector('#messageDiv');
+                    messageDiv.innerText = message;
+                }
+            </script>
+        </div>
+    </div>
+</form>
+{% endblock content %}
