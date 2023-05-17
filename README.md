@@ -6,6 +6,8 @@
     ...\english>venv\Scripts\activate
 3) Установить необходимые модули
     ...\english>pip install -r requirements.txt
+4) Установить модуль stopwords    
+    ...\english>python -m nltk.downloader stopwords
 4) Запустить проект
     ...\english>py manage.py runserver
 
